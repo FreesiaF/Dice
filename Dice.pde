@@ -5,19 +5,23 @@ void setup()
 }
 void draw()
 {
-	int x = 50;
-	int y = 10;
 	
-	while(x < 450){
-	Die scum = new Die(x,150);
-	scum.show();
-	x = x+70;	
-	}
-
+	background(206,52,52);
+	int totalSumOne = 0;
+	for(int y =20; y <=500; y= y+100)
+	{
+		for(int x = 50; x < 450;x = x+90)
+		{
+			Die scum = new Die(x,y);
+			scum.show();
 		
+			totalSumOne = scum.rollNum + totalSumOne;	
+		}
+		int totalSum = totalSumOne;
+		System.out.println(totalSum);
 	
-
-
+		text("Total: "+totalSum, 450,480);	
+	}
 	
 	
 }
@@ -49,44 +53,42 @@ class Die //models one single dice cube
 		if(rollNum == 1)
 		{
 			rollOne();
-			numDots = 1;
+			
 		}
 			
 		else if(rollNum ==2)
 		{
 			rollTwo();
-			numDots = 2;	
+				
 		}
 			
 		else if(rollNum == 3)
 		{
 			rollOne();
 			rollTwo();
-			numDots = 3;	
+				
 		}
 
 		else if(rollNum == 4)
 		{
 			rollFour();	
-			numDots = 4;
+			
 		}
 
 		else if(rollNum ==5)
 		{
 			rollFour();
 			rollOne();
-			numDots = 5;
+			
 		}
 			
 		else
 		{
 			rollFour();
 			rollSix();
-			numDots = 6;
+			
 		}
 
-
-		
 		
 	}
 	void rollOne(){
