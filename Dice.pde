@@ -1,3 +1,4 @@
+int totalSumOne = 0;
 void setup()
 {
 	size(500,500);
@@ -7,27 +8,30 @@ void draw()
 {
 	
 	background(206,52,52);
-	int totalSumOne = 0;
+	
+	
 	for(int y =20; y <=500; y= y+100)
 	{
 		for(int x = 50; x < 450;x = x+90)
 		{
 			Die scum = new Die(x,y);
 			scum.show();
-		
-			totalSumOne = scum.rollNum + totalSumOne;	
+			
+			totalSumOne = scum.rollNum + totalSumOne;
+			System.out.println(totalSumOne);	
 		}
-		int totalSum = totalSumOne;
-		System.out.println(totalSum);
-	
-		text("Total: "+totalSum, 450,480);	
+			
 	}
+	int totalSum = totalSumOne;
 	
+	
+	text("Total: "+totalSum, 440,485);
 	
 }
 void mousePressed()
 {
 	redraw();
+	totalSumOne = 0;
 }
 class Die //models one single dice cube
 {
