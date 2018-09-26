@@ -1,4 +1,10 @@
 int totalSumOne = 0;
+int rolledOne = 0;
+int rolledTwo = 0;
+int rolledThree = 0;
+int rolledFour = 0;
+int rolledFive = 0;
+int rolledSix = 0;
 void setup()
 {
 	size(500,500);
@@ -18,13 +24,54 @@ void draw()
 			scum.show();
 			
 			totalSumOne = scum.rollNum + totalSumOne;
-			System.out.println(totalSumOne);	
+			int diceOne = scum.rollNum;
+			if (scum.rollNum == 1)
+				rolledOne = rolledOne+1;
+			if (scum.rollNum == 2)
+				rolledTwo = rolledTwo+1;
+			if (scum.rollNum == 3)
+				rolledThree = rolledThree+1;
+			if (scum.rollNum == 4)
+				rolledFour = rolledFour+1;
+			if (scum.rollNum == 5)
+				rolledFive = rolledFive+1;
+			if (scum.rollNum == 6)
+				rolledSix = rolledSix+1;
+
+
+
+			
+			
 		}
+		if (rolledOne==1 && rolledTwo == 1 && rolledThree ==1
+				&& rolledFour==1&& rolledFive ==1)
+		{
+			text("Straight!",50,y-8);
+		}
+
+				
+	else if (rolledFive == 3 || rolledOne == 3 ||rolledTwo == 3 
+				|| rolledThree ==3 || rolledSix ==3 || rolledFour == 3)
+		{
+		text("three of a kind!",50,y-8);
+
+		}
+				
+	else if (rolledFive == 2 || rolledOne == 2 ||rolledTwo == 2 
+					|| rolledThree ==2 || rolledSix ==2 || rolledFour == 2)
+		{
+			text("two of a kind!", 50,y-8);
+		}
+
+				
+	else{
+			text("one of a kind", 50, y-8);
+		}
+		
 			
 	}
 	int totalSum = totalSumOne;
-	
-	
+		
 	text("Total: "+totalSum, 440,485);
 	
 }
@@ -32,6 +79,13 @@ void mousePressed()
 {
 	redraw();
 	totalSumOne = 0;
+	rolledOne = 0;
+	rolledTwo = 0;
+	rolledThree=0;
+	rolledFour = 0;
+	rolledFive = 0;
+ 	rolledSix = 0;
+
 }
 class Die //models one single dice cube
 {
