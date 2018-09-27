@@ -5,6 +5,7 @@ int rolledThree = 0;
 int rolledFour = 0;
 int rolledFive = 0;
 int rolledSix = 0;
+int y = 25;
 void setup()
 {
 	size(500,500);
@@ -15,12 +16,9 @@ void draw()
 	
 	background(206,52,52);
 	
-	
-	for(int y =20; y <=500; y= y+100)
-	{
 		for(int x = 50; x < 450;x = x+90)
 		{
-			Die scum = new Die(x,y);
+			Die scum = new Die(x,25);
 			scum.show();
 			
 			totalSumOne = scum.rollNum + totalSumOne;
@@ -37,43 +35,83 @@ void draw()
 				rolledFive = rolledFive+1;
 			if (scum.rollNum == 6)
 				rolledSix = rolledSix+1;
-
-
-
 			
 			
 		}
-		if (rolledOne==1 && rolledTwo == 1 && rolledThree ==1
+		
+		rollValue();
+
+		for(int x = 50; x < 450;x = x+90)
+		{
+	
+			Die fool = new Die(x,25+95);
+			fool.show();
+			
+			totalSumOne = fool.rollNum + totalSumOne;
+			int diceOne = fool.rollNum;
+			if (fool.rollNum == 1)
+				rolledOne = rolledOne+1;
+			if (fool.rollNum == 2)
+				rolledTwo = rolledTwo+1;
+			if (fool.rollNum == 3)
+				rolledThree = rolledThree+1;
+			if (fool.rollNum == 4)
+				rolledFour = rolledFour+1;
+			if (fool.rollNum == 5)
+				rolledFive = rolledFive+1;
+			if (fool.rollNum == 6)
+				rolledSix = rolledSix+1;
+			
+			
+		}
+		
+		rollValue();
+
+	int totalSum = totalSumOne;
+		
+	text("Total: "+ totalSum, 440,485);
+	
+}
+
+void rollValue()
+{
+			if (rolledOne==1 && rolledTwo == 1 && rolledThree ==1
 				&& rolledFour==1&& rolledFive ==1)
 		{
 			text("Straight!",50,y-8);
 		}
 
-				
-	else if (rolledFive == 3 || rolledOne == 3 ||rolledTwo == 3 
+		else if (rolledFive == 5 || rolledOne == 5 ||rolledTwo == 5 
+				|| rolledThree ==5 || rolledSix ==5 || rolledFour == 5)
+		{
+		text("five of a kind!",50,y-8);
+
+		}
+		else if (rolledFive == 4 || rolledOne == 4 ||rolledTwo == 4 
+				|| rolledThree ==4 || rolledSix ==4 || rolledFour == 4)
+		{
+		text("four of a kind!",50,y-8);
+
+		}
+
+		else if (rolledFive == 3 || rolledOne == 3 ||rolledTwo == 3 
 				|| rolledThree ==3 || rolledSix ==3 || rolledFour == 3)
 		{
 		text("three of a kind!",50,y-8);
 
 		}
 				
-	else if (rolledFive == 2 || rolledOne == 2 ||rolledTwo == 2 
+		else if (rolledFive == 2 || rolledOne == 2 ||rolledTwo == 2 
 					|| rolledThree ==2 || rolledSix ==2 || rolledFour == 2)
 		{
 			text("two of a kind!", 50,y-8);
 		}
 
 				
-	else{
+		else{
 			text("one of a kind", 50, y-8);
 		}
-		
-			
-	}
-	int totalSum = totalSumOne;
-		
-	text("Total: "+totalSum, 440,485);
-	
+
 }
 void mousePressed()
 {
